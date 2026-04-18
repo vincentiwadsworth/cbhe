@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+---
+
+<BaseLayout title="Cámara Boliviana de Hidrocarburos y Energía">
+  <!-- Hero Section -->
+  <header class="relative min-h-[819px] flex items-center justify-center bg-surface-container-low overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <Image inferSize={true} alt="Planta de gas natural al atardecer" class="w-full h-full object-cover opacity-20 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3CwQTnDZrz7oQR9O3ywolyU2qBfSiQ2u5wTZFzxtWiP0sAnagSKHKLSSDpdNq_wkJ4RrZHe3nwVaapxOM8KE4aYEjoSnpLwRdOiqOrcYErgRhov3-aE34BXinD1b6lbN1y6Q-MgAS01lZxWbVaLHZO9Qu527s2bsBD0QxMYX2h0kEFr7eKL2Ms9ai_u0AqaVsW5q3K7-yXCBvfEq2M7e-cSiYML3tQX1yW8QBu7Qt1IFUW6ioQ4N6DfPlmjQ4huKrPDsqhoPg16c"/>
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary-container/80 mix-blend-multiply"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-8 w-full text-center">
+      <h1 class="text-on-primary font-headline font-extrabold text-[56px] leading-tight mb-6 tracking-tight max-w-4xl mx-auto">
+        Liderazgo y Coordinación en el Sector Energético
+      </h1>
+      <p class="text-on-primary-container font-body text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+        Impulsando el desarrollo sostenible, la innovación tecnológica y la seguridad operativa en la industria de hidrocarburos de Bolivia.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={import.meta.env.BASE_URL + "/about"} class="bg-surface text-primary rounded-sm px-8 py-4 font-semibold hover:bg-surface-container-highest transition-colors">Conozca la Cámara</a>
+        <a href={import.meta.env.BASE_URL + "/blog"} class="bg-transparent border border-on-primary text-on-primary rounded-sm px-8 py-4 font-semibold hover:bg-on-primary/10 transition-colors">Ver Novedades</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quiénes Somos (Resumen) -->
+  <section class="py-24 bg-surface relative">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-primary font-headline text-[28px] font-bold mb-6">Autoridad Técnica y Defensa Sectorial</h2>
+          <p class="text-on-surface-variant font-body text-lg leading-relaxed mb-6">
+            La Cámara Boliviana de Hidrocarburos y Energía (CBHE) agrupa a las principales empresas que operan en la cadena productiva del sector hidrocarburífero y energético del país. Nuestro propósito es ser el eje articulador de la industria.
+          </p>
+          <p class="text-on-surface-variant font-body text-lg leading-relaxed mb-8">
+            Trabajamos enfocados en la coordinación técnica, el análisis normativo, la promoción de mejores prácticas y el fomento a la capacitación de alto nivel, garantizando el desarrollo responsable de los recursos energéticos.
+          </p>
+          <a class="inline-flex items-center text-primary-container font-semibold hover:underline decoration-primary-container underline-offset-4" href={import.meta.env.BASE_URL + "/about"}>
+            Leer nuestra misión completa <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+          </a>
+        </div>
+        <div class="relative h-[500px] rounded-sm overflow-hidden bg-surface-container-low shadow-sm">
+          <Image inferSize={true} alt="Ingenieros revisando" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7DWMEr5qSDSDeT_agIB0cQ2wrIyFrkbOhbZpgHegYi8i2n-ji3ls8o6jjcmxmi0lVARws3xaqknka4MSjQ3csucNXanbOV45CWphCMD9573ho-r6KWy0Qlkp7_IbiANrmNh4IZBeT8UsXVIlKYSz2mS0lMeQSrADNG2g4ieLUwqVEOMx0-Kb7XkqhxseVpXhWwLjoqZBJGFyeHPt3CuzqN4kznv8GsAf4YYs_JOAR9QFJ0nMzz0y727yTCAYmcqNx9g5lQP-GG-M"/>
+          <div class="absolute bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-sm p-6 border-t border-surface-container-highest">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-primary font-bold text-2xl">30+</p>
+                <p class="text-on-surface-variant text-sm font-medium">Años de trayectoria</p>
+              </div>
+              <div class="w-px h-12 bg-surface-container-highest"></div>
+              <div>
+                <p class="text-primary font-bold text-2xl">100+</p>
+                <p class="text-on-surface-variant text-sm font-medium">Empresas afiliadas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grupos de Miembros -->
+  <section class="py-24 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="mb-16">
+        <h2 class="text-primary font-headline text-[28px] font-bold mb-4">Nuestra Red de Miembros</h2>
+        <p class="text-on-surface-variant font-body text-lg max-w-3xl">Representamos a toda la cadena de valor de la industria energética.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <!-- Categories -->
+        {['Exploración y Producción', 'Servicios en Pozo', 'Servicios en Superficie', 'Industria y Transporte', 'Servicios Auxiliares'].map((group, index) => (
+          <div class="bg-surface rounded-sm p-6 hover:bg-surface-container-highest transition-colors duration-300 group cursor-pointer border border-surface-container-highest/50">
+            <div class="w-12 h-12 bg-surface-container-low rounded-sm flex items-center justify-center mb-6 group-hover:bg-primary-container transition-colors">
+              <span class="material-symbols-outlined text-primary group-hover:text-on-primary">explore</span>
+            </div>
+            <h3 class="font-headline font-bold text-on-surface mb-2">{group}</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Descripción del grupo perteneciente a la organización.</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

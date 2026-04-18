@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={`${entry.data.title} - CBHE`}>
+  <main class="flex-grow py-16 px-4 sm:px-6 lg:px-8">
+    <article class="max-w-prose mx-auto">
+      <header class="mb-10 text-center">
+        <div class="flex items-center justify-center space-x-3 mb-6">
+          <time class="text-on-surface-variant font-label text-sm font-medium" datetime={entry.data.pubDate.toISOString()}>
+            {entry.data.pubDate.toLocaleDateString()}
+          </time>
+        </div>
+        <h1 class="text-4xl md:text-[56px] leading-tight font-headline font-bold text-on-surface mb-6 tracking-tight">
+          {entry.data.title}
+        </h1>
+        <p class="text-lg md:text-xl text-on-surface-variant font-body leading-relaxed max-w-3xl mx-auto">
+          {entry.data.description}
+        </p>
+      </header>
+
+      {entry.data.heroImage && (
+        <figure class="mb-12">
+          {typeof entry.data.heroImage === 'string' ? (
+              <img src={entry.data.heroImage} alt={entry.data.title} class="w-full h-[400px] md:h-[500px] object-cover rounded-DEFAULT bg-surface-container-low" />
+          ) : (
+              <img src={entry.data.heroImage.src} alt={entry.data.title} class="w-full h-[400px] md:h-[500px] object-cover rounded-DEFAULT bg-surface-container-low" />
+          )}
+        </figure>
+      )}
+
+      <div class="prose prose-lg max-w-none font-body text-on-surface leading-[1.7] space-y-8">
+        <Content />
+      </div>
+    </article>
+  </main>
+</BaseLayout>

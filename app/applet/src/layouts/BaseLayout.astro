@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+
+const { title = 'CBHE' } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+
+const isCurrentPath = (path: string) => {
+  const currentPath = Astro.url.pathname;
+  // Handle root and paths ensuring trailing slash behavior
+  const normalizedCurrent = currentPath.replace(/\/$/, '') || '/';
+  const normalizedPath = path.replace(/\/$/, '') || '/';
+  return normalizedCurrent === normalizedPath || (path !== baseUrl && normalizedCurrent.startsWith(normalizedPath));
+};
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col">
+  <!-- TopNavBar -->
+  <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md font-inter antialiased text-sm font-medium tracking-tight docked full-width top-0 sticky z-50 tonal shift via bg-surface-container-low dark:bg-slate-800/50 shadow-sm dark:shadow-none">
+    <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+      <a href={`${baseUrl}/`} class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-blue-700 dark:text-blue-400" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        <span class="text-xl font-bold tracking-tighter text-blue-700 dark:text-blue-400">CBHE</span>
+      </a>
+      <div class="hidden md:flex flex-row items-center space-x-8">
+        <a href={`${baseUrl}`} class={`transition-all duration-300 scale-95 active:opacity-80 transition-transform ${isCurrentPath(baseUrl) ? 'text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 pb-1' : 'text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-50/50 px-3 py-2 rounded'}`}>Inicio</a>
+        <a href={`${baseUrl}/about`} class={`transition-all duration-300 scale-95 active:opacity-80 transition-transform ${isCurrentPath(`${baseUrl}/about`) ? 'text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 pb-1' : 'text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-50/50 px-3 py-2 rounded'}`}>Quiénes somos</a>
+        <a href={`${baseUrl}/courses`} class={`transition-all duration-300 scale-95 active:opacity-80 transition-transform ${isCurrentPath(`${baseUrl}/courses`) ? 'text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 pb-1' : 'text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-50/50 px-3 py-2 rounded'}`}>Capacitación</a>
+        <a href={`${baseUrl}/blog`} class={`transition-all duration-300 scale-95 active:opacity-80 transition-transform ${isCurrentPath(`${baseUrl}/blog`) ? 'text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 pb-1' : 'text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-50/50 px-3 py-2 rounded'}`}>Novedades</a>
+        <a href="#" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-50/50 transition-all duration-300 px-3 py-2 rounded scale-95 active:opacity-80 transition-transform">Contacto</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="material-symbols-outlined text-slate-600 hover:text-blue-700 cursor-pointer transition-colors">search</span>
+        <button class="bg-primary-container text-on-primary rounded-sm px-4 py-2 font-semibold hover:opacity-90 transition-opacity">Afiliarse</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow w-full">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-50 dark:bg-slate-950 font-inter text-xs leading-relaxed w-full border-t border-slate-200 dark:border-slate-800 mt-auto">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
+      <div class="col-span-1 md:col-span-1">
+        <div class="text-lg font-bold text-slate-900 dark:text-white mb-4">CBHE</div>
+        <p class="text-slate-500 dark:text-slate-400 mb-6">Impulsando el desarrollo sostenible del sector hidrocarburífero y energético de Bolivia.</p>
+      </div>
+      <div class="col-span-1">
+        <h4 class="font-semibold text-slate-900 dark:text-white mb-4">Enlaces Rápidos</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-slate-500 dark:text-slate-400 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all">Transparencia</a></li>
+          <li><a href="#" class="text-slate-500 dark:text-slate-400 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all">Estadísticas</a></li>
+          <li><a href="#" class="text-slate-500 dark:text-slate-400 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all">Convenios</a></li>
+        </ul>
+      </div>
+      <div class="col-span-1">
+        <h4 class="font-semibold text-slate-900 dark:text-white mb-4">Legal</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-slate-500 dark:text-slate-400 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all">Privacidad</a></li>
+          <li><a href="#" class="text-slate-500 dark:text-slate-400 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all">Términos de Uso</a></li>
+        </ul>
+      </div>
+      <div class="col-span-1">
+        <h4 class="font-semibold text-slate-900 dark:text-white mb-4">Contacto</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-slate-500 dark:text-slate-400 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all">Soporte Técnico</a></li>
+          <li class="text-slate-500 dark:text-slate-400">info@cbhe.org.bo</li>
+        </ul>
+      </div>
+      <div class="col-span-1 md:col-span-4 border-t border-slate-200 dark:border-slate-800 pt-8 mt-4">
+        <p class="text-slate-500 dark:text-slate-400 text-center md:text-left">© 2024 Cámara Boliviana de Hidrocarburos y Energía. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

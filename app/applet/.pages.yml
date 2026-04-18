@@ -1,0 +1,62 @@
+media:
+  input: public/media
+  output: /media
+content:
+  - name: blog
+    label: Novedades
+    type: collection
+    path: src/content/blog
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: description
+        label: Descripción
+        type: string
+        required: true
+      - name: pubDate
+        label: Fecha de Publicación
+        type: date
+        required: true
+      - name: author
+        label: Autor
+        type: string
+      - name: heroImage
+        label: Imagen Principal
+        type: image
+      - name: body
+        label: Contenido
+        type: rich-text
+  - name: courses
+    label: Cursos
+    type: collection
+    path: src/content/courses
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: description
+        label: Descripción
+        type: string
+        required: true
+      - name: startDate
+        label: Fecha de Inicio
+        type: date
+        required: true
+      - name: duration
+        label: Duración
+        type: string
+      - name: modality
+        label: Modalidad
+        type: string
+      - name: price
+        label: Precio
+        type: string
+      - name: image
+        label: Imagen
+        type: image
+      - name: body
+        label: Contenido
+        type: rich-text

@@ -1,0 +1,9 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  body {
+    @apply font-body bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container antialiased;
+  }
+}
